@@ -8,6 +8,14 @@ Comanda Demo é uma vitrine pública e segura de um painel de gestão para opera
 
 Esta demo não contém dados reais, credenciais de produção, banco real, chamadas externas, integrações reais de pagamento, impressão ou qualquer conexão com a versão comercial. Todos os dados são fictícios e ficam salvos em `localStorage` no navegador.
 
+## Demonstração visual
+
+![Login da demo](docs/images/comanda-login.png)
+![Dashboard da demo](docs/images/comanda-dashboard.png)
+![Pedidos da demo](docs/images/comanda-pedidos.png)
+![Cardápio da demo](docs/images/comanda-cardapio.png)
+![Versão mobile da demo](docs/images/comanda-mobile.png)
+
 ## Funcionalidades demonstrativas
 
 - Login demo.
