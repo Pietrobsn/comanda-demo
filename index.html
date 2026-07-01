@@ -6,7 +6,7 @@
     <title>Comanda Demo</title>
     <meta
       name="description"
-      content="Versão demonstrativa pública do Comanda, com dados fake e persistência local."
+      content="Versão demonstrativa pública do Comanda, com dados fictícios e persistência local."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -15,17 +15,23 @@
       <main class="login-panel" aria-labelledby="loginTitle">
         <section class="login-copy">
           <div class="brand-lockup" aria-label="Comanda Demo">
-            <span class="brand-mark">C</span>
-            <span>Comanda Demo</span>
+            <span class="brand-mark" aria-hidden="true">C</span>
+            <div>
+              <span>Comanda Demo</span>
+              <small>Painel operacional para portfólio</small>
+            </div>
           </div>
-          <h1 id="loginTitle">Painel demonstrativo para operação de delivery.</h1>
+          <h1 id="loginTitle">Central de pedidos para operação de balcão e delivery.</h1>
           <p>
-            Entre com a credencial demo para navegar por pedidos, cardápio, caixa,
-            entregadores, estoque e relatórios usando somente dados fictícios.
+            Navegue por pedidos, comandas, cardápio, caixa e estoque em uma
+            experiência demonstrativa segura, com dados fictícios salvos apenas
+            neste navegador.
           </p>
-          <div class="demo-note">
-            <strong>Ambiente público.</strong>
-            <span>Sem dados reais, sem integrações externas e sem impressão real.</span>
+          <div class="login-proof-grid" aria-label="Recursos da demo">
+            <span>Pedidos em etapas</span>
+            <span>Caixa local</span>
+            <span>Cardápio editável</span>
+            <span>Impressão simulada</span>
           </div>
         </section>
 
@@ -33,6 +39,11 @@
           <div>
             <p class="section-kicker">Acesso demo</p>
             <h2>Entrar no painel</h2>
+            <p class="login-card-copy">Use a credencial abaixo para explorar o produto sem conexão externa.</p>
+          </div>
+          <div class="credential-box" aria-label="Credenciais demo">
+            <span>Email: <strong>demo@comanda.local</strong></span>
+            <span>Senha: <strong>Demo@123</strong></span>
           </div>
           <label>
             Email
@@ -56,10 +67,17 @@
     <div id="appView" class="app-shell hidden">
       <aside class="sidebar" aria-label="Navegação principal">
         <div class="sidebar-brand">
-          <span class="brand-mark">C</span>
+          <span class="brand-mark" aria-hidden="true">C</span>
           <div>
             <strong>Comanda Demo</strong>
-            <small>Dados salvos neste navegador</small>
+            <small>Operação demonstrativa</small>
+          </div>
+        </div>
+        <div class="sidebar-status">
+          <span></span>
+          <div>
+            <strong>Loja aberta</strong>
+            <small>Pedidos demo ativos</small>
           </div>
         </div>
 
@@ -98,13 +116,13 @@
           </div>
           <div class="topbar-actions">
             <button id="resetDemoBtn" class="secondary-action" type="button">Reiniciar demo</button>
-            <button id="newOrderBtn" class="primary-action" type="button">Novo pedido fake</button>
+            <button id="newOrderBtn" class="primary-action" type="button">Novo pedido demo</button>
           </div>
         </header>
 
         <section class="demo-banner">
-          <strong>Versão demonstrativa.</strong>
-          <span>Todos os registros são fictícios e ficam apenas no localStorage do navegador.</span>
+          <strong>Demo pública</strong>
+          <span>Dados fictícios, persistência local e impressão apenas simulada.</span>
         </section>
 
         <section id="dashboard" class="view-section is-active" aria-labelledby="dashboardTitle">
@@ -124,7 +142,7 @@
             <article class="panel">
               <div class="panel-heading">
                 <h4>Produtos mais pedidos</h4>
-                <span class="status-chip muted">Fake</span>
+                <span class="status-chip muted">Demo</span>
               </div>
               <div id="topProducts" class="compact-list"></div>
             </article>
@@ -134,7 +152,7 @@
         <section id="orders" class="view-section" aria-labelledby="ordersTitle">
           <div class="section-heading">
             <p class="section-kicker">Pedidos e comandas</p>
-            <h3 id="ordersTitle">Pedidos fake</h3>
+            <h3 id="ordersTitle">Pedidos e Comandas</h3>
           </div>
           <div id="ordersBoard" class="orders-board"></div>
         </section>
@@ -142,7 +160,7 @@
         <section id="catalog" class="view-section" aria-labelledby="catalogTitle">
           <div class="section-heading">
             <p class="section-kicker">Cardápio demo</p>
-            <h3 id="catalogTitle">Produtos fake</h3>
+            <h3 id="catalogTitle">Cardápio</h3>
           </div>
           <form id="productForm" class="inline-form">
             <input id="productName" placeholder="Nome do produto" />
@@ -155,7 +173,7 @@
 
         <section id="cash" class="view-section" aria-labelledby="cashTitle">
           <div class="section-heading">
-            <p class="section-kicker">Caixa fake</p>
+            <p class="section-kicker">Caixa demonstrativo</p>
             <h3 id="cashTitle">Movimentos do dia</h3>
           </div>
           <form id="cashForm" class="inline-form">
@@ -174,7 +192,7 @@
         <section id="drivers" class="view-section" aria-labelledby="driversTitle">
           <div class="section-heading">
             <p class="section-kicker">Equipe externa</p>
-            <h3 id="driversTitle">Entregadores fake</h3>
+            <h3 id="driversTitle">Entregadores</h3>
           </div>
           <div id="driversList" class="data-list"></div>
         </section>
@@ -182,7 +200,7 @@
         <section id="stock" class="view-section" aria-labelledby="stockTitle">
           <div class="section-heading">
             <p class="section-kicker">Estoque básico</p>
-            <h3 id="stockTitle">Itens fake</h3>
+            <h3 id="stockTitle">Itens demonstrativos</h3>
           </div>
           <div id="stockList" class="data-list"></div>
         </section>

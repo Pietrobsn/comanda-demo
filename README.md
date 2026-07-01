@@ -10,24 +10,33 @@ Esta demo não contém dados reais, credenciais de produção, banco real, chama
 
 ## Demonstração visual
 
-![Login da demo](docs/images/comanda-login.png)
-![Dashboard da demo](docs/images/comanda-dashboard.png)
-![Pedidos da demo](docs/images/comanda-pedidos.png)
-![Cardápio da demo](docs/images/comanda-cardapio.png)
-![Versão mobile da demo](docs/images/comanda-mobile.png)
+### Login
+<img src="docs/images/comanda-login.png" alt="Login da demo" width="780">
+
+### Dashboard
+<img src="docs/images/comanda-dashboard.png" alt="Dashboard da demo" width="780">
+
+### Pedidos e Comandas
+<img src="docs/images/comanda-pedidos.png" alt="Pedidos e comandas da demo" width="780">
+
+### Cardápio
+<img src="docs/images/comanda-cardapio.png" alt="Cardápio da demo" width="780">
+
+### Versão mobile
+<img src="docs/images/comanda-mobile.png" alt="Versão mobile da demo" width="360">
 
 ## Funcionalidades demonstrativas
 
 - Login demo.
 - Dashboard com indicadores fictícios.
-- Pedidos e comandas fake com mudanca de status.
-- Cardápio/produtos fake.
-- Caixa fake com entradas e saídas locais.
-- Entregadores fake.
-- Estoque básico fake.
+- Pedidos e comandas demo com mudança de status.
+- Cardápio/produtos demonstrativos.
+- Caixa demo com entradas e saídas locais.
+- Entregadores demonstrativos.
+- Estoque básico demo.
 - Relatórios simples calculados no navegador.
 - Impressão simulada com mensagem de demonstração.
-- Reinício dos dados fake a qualquer momento.
+- Reinício dos dados demonstrativos a qualquer momento.
 
 ## Tecnologias
 

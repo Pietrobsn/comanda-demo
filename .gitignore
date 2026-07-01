@@ -3,6 +3,7 @@
 node_modules/
 dist/
 build/
+graphify-out/
 *.log
 work/
 backup/

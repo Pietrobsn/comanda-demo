@@ -4,6 +4,7 @@ const STATE_KEY = "comandaDemoState";
 const SESSION_KEY = "comandaDemoSession";
 
 const statusFlow = ["Recebido", "Em preparo", "Saiu para entrega", "Finalizado"];
+const demoCustomerNames = ["Mesa 04", "Pedido Balcão", "Cliente Retirada", "Mesa 07", "Retirada balcão"];
 
 const money = new Intl.NumberFormat("pt-BR", {
   style: "currency",
@@ -47,28 +48,28 @@ function createInitialState() {
     orders: [
       {
         id: "CMD-1001",
-        customer: "Mesa Demo 04",
+        customer: "Mesa 04",
         item: "Combo smash + batata",
         status: "Recebido",
         total: 42.9,
         paid: false,
-        channel: "Balcao",
+        channel: "Balcão",
         minutes: 4
       },
       {
         id: "CMD-1002",
-        customer: "Cliente Exemplo",
-        item: "Pizza media metade calabresa",
+        customer: "Pedido Balcão",
+        item: "Pizza média metade calabresa",
         status: "Em preparo",
         total: 58,
         paid: true,
-        channel: "Delivery",
+        channel: "Balcão",
         minutes: 12
       },
       {
         id: "CMD-1003",
-        customer: "Pedido Portfolio",
-        item: "Acai 500ml + adicionais",
+        customer: "Cliente Retirada",
+        item: "Açaí 500ml + adicionais",
         status: "Saiu para entrega",
         total: 31.5,
         paid: true,
@@ -77,19 +78,19 @@ function createInitialState() {
       }
     ],
     products: [
-      { id: "PRD-1", name: "Pizza media demo", category: "Pizzas", price: 58, active: true, sold: 18 },
-      { id: "PRD-2", name: "Smash artesanal demo", category: "Hamburgueres", price: 32.9, active: true, sold: 26 },
+      { id: "PRD-1", name: "Pizza média da casa", category: "Pizzas", price: 58, active: true, sold: 18 },
+      { id: "PRD-2", name: "Smash artesanal", category: "Hambúrgueres", price: 32.9, active: true, sold: 26 },
       { id: "PRD-3", name: "Combo batata + bebida", category: "Combos", price: 18.5, active: true, sold: 14 },
-      { id: "PRD-4", name: "Acai 500ml demo", category: "Sobremesas", price: 24, active: false, sold: 7 }
+      { id: "PRD-4", name: "Açaí 500ml", category: "Sobremesas", price: 24, active: false, sold: 7 }
     ],
     cash: [
       { id: "MOV-1", type: "entrada", description: "Pedidos pagos", amount: 132.4 },
-      { id: "MOV-2", type: "saida", description: "Compra de insumos fake", amount: 35 }
+      { id: "MOV-2", type: "saida", description: "Reposição de insumos", amount: 35 }
     ],
     drivers: [
-      { id: "DRV-1", name: "Ana Demo", zone: "Centro", available: true, deliveries: 8 },
-      { id: "DRV-2", name: "Bruno Demo", zone: "Bairros proximos", available: false, deliveries: 5 },
-      { id: "DRV-3", name: "Carla Demo", zone: "Raio expandido", available: true, deliveries: 3 }
+      { id: "DRV-1", name: "Ana Entrega", zone: "Centro", available: true, deliveries: 8 },
+      { id: "DRV-2", name: "Bruno Rota", zone: "Bairros próximos", available: false, deliveries: 5 },
+      { id: "DRV-3", name: "Carla Express", zone: "Raio expandido", available: true, deliveries: 3 }
     ],
     stock: [
       { id: "STK-1", name: "Massa demo", unit: "un", quantity: 36, minimum: 12 },
@@ -158,7 +159,7 @@ function showToast(message) {
 function viewLabel(view) {
   return {
     dashboard: "Dashboard",
-    orders: "Pedidos",
+    orders: "Pedidos e Comandas",
     catalog: "Cardápio",
     cash: "Caixa",
     drivers: "Entregadores",
@@ -204,9 +205,9 @@ function renderDashboard() {
   const stockAlerts = state.stock.filter((item) => item.quantity <= item.minimum).length;
 
   dom.metricsGrid.innerHTML = [
-    metricCard("Pedidos abertos", activeOrders.length, "Em fila agora"),
+    metricCard("Pedidos em aberto", activeOrders.length, "Operação ativa"),
     metricCard("Receita paga", money.format(totalRevenue()), `${paidOrders} pedido(s)`),
-    metricCard("Ticket médio", money.format(totalRevenue() / Math.max(paidOrders, 1)), "Somente fake"),
+    metricCard("Ticket médio", money.format(totalRevenue() / Math.max(paidOrders, 1)), "Dados demo"),
     metricCard("Alertas estoque", stockAlerts, "Itens no mínimo")
   ].join("");
 
@@ -258,7 +259,7 @@ function renderOrders() {
     .map((status) => {
       const orders = state.orders.filter((order) => order.status === status);
       return `
-        <article class="order-column">
+        <article class="order-column status-${statusClass(status)}">
           <div class="column-heading">
             <h4>${escapeHtml(status)}</h4>
             <span>${orders.length}</span>
@@ -283,7 +284,7 @@ function renderOrders() {
                         <strong>${money.format(order.total)}</strong>
                       </div>
                       <div class="card-actions">
-                        <button data-action="advance-order" data-id="${order.id}" type="button">Avancar</button>
+                        <button data-action="advance-order" data-id="${order.id}" type="button">Avançar</button>
                         <button data-action="toggle-paid" data-id="${order.id}" type="button">Pagamento</button>
                         <button data-action="print-order" data-id="${order.id}" type="button">Imprimir</button>
                       </div>
@@ -303,16 +304,16 @@ function renderCatalog() {
   dom.catalogList.innerHTML = state.products
     .map(
       (product) => `
-        <article class="data-row">
+        <article class="data-row product-row">
           <div>
             <strong>${escapeHtml(product.name)}</strong>
             <small>${escapeHtml(product.category)} - ${money.format(product.price)}</small>
           </div>
           <span class="${product.active ? "status-chip" : "status-chip muted"}">
-            ${product.active ? "Ativo" : "Oculto"}
+            ${product.active ? "Ativo" : "Inativo"}
           </span>
           <button data-action="toggle-product" data-id="${product.id}" type="button">
-            ${product.active ? "Ocultar" : "Ativar"}
+            ${product.active ? "Desativar" : "Ativar"}
           </button>
         </article>
       `
@@ -329,8 +330,8 @@ function renderCash() {
     .reduce((sum, movement) => sum + movement.amount, 0);
 
   dom.cashSummary.innerHTML = [
-    metricCard("Entradas", money.format(entries), "Movimentos fake"),
-    metricCard("Saídas", money.format(exits), "Movimentos fake"),
+    metricCard("Entradas", money.format(entries), "Movimentos demo"),
+    metricCard("Saídas", money.format(exits), "Movimentos demo"),
     metricCard("Saldo", money.format(entries - exits), "Calculado localmente")
   ].join("");
 
@@ -361,7 +362,7 @@ function renderDrivers() {
             <small>${escapeHtml(driver.zone)} - ${driver.deliveries} entrega(s)</small>
           </div>
           <span class="${driver.available ? "status-chip" : "status-chip muted"}">
-            ${driver.available ? "Disponivel" : "Em pausa"}
+            ${driver.available ? "Disponível" : "Em pausa"}
           </span>
           <button data-action="toggle-driver" data-id="${driver.id}" type="button">
             Alternar
@@ -379,7 +380,7 @@ function renderStock() {
         <article class="data-row">
           <div>
             <strong>${escapeHtml(item.name)}</strong>
-            <small>Minimo: ${item.minimum} ${escapeHtml(item.unit)}</small>
+            <small>Mínimo: ${item.minimum} ${escapeHtml(item.unit)}</small>
           </div>
           <span class="${item.quantity <= item.minimum ? "status-chip danger" : "status-chip"}">
             ${item.quantity} ${escapeHtml(item.unit)}
@@ -428,7 +429,7 @@ function renderReports() {
       </div>
       <div class="compact-list">
         <div class="compact-row"><span><strong>Total pago</strong><small>Pedidos marcados como pagos</small></span><em>${money.format(totalRevenue())}</em></div>
-        <div class="compact-row"><span><strong>Pedidos</strong><small>Todos os canais fake</small></span><em>${state.orders.length}</em></div>
+        <div class="compact-row"><span><strong>Pedidos</strong><small>Todos os canais demo</small></span><em>${state.orders.length}</em></div>
         <div class="compact-row"><span><strong>Produtos ativos</strong><small>Cardápio demo</small></span><em>${state.products.filter((product) => product.active).length}</em></div>
       </div>
     </article>
@@ -439,22 +440,31 @@ function emptyState(message) {
   return `<p class="empty-state">${escapeHtml(message)}</p>`;
 }
 
+function statusClass(status) {
+  return status
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replaceAll(" ", "-");
+}
+
 function addDemoOrder() {
   const products = state.products.filter((product) => product.active);
   const product = products[Math.floor(Math.random() * products.length)] || state.products[0];
   const nextId = `CMD-${1000 + state.orders.length + 1}`;
+  const customer = demoCustomerNames[state.orders.length % demoCustomerNames.length];
   state.orders.unshift({
     id: nextId,
-    customer: `Cliente Demo ${state.orders.length + 1}`,
+    customer,
     item: product.name,
     status: "Recebido",
     total: product.price,
     paid: false,
-    channel: state.orders.length % 2 ? "Balcao" : "Delivery",
+    channel: state.orders.length % 2 ? "Balcão" : "Delivery",
     minutes: 1
   });
   product.sold += 1;
-  saveAndRender(`Pedido fake ${nextId} criado.`);
+  saveAndRender(`Pedido demo ${nextId} criado.`);
   setView("orders");
 }
 
@@ -537,7 +547,7 @@ dom.logoutBtn.addEventListener("click", () => {
 
 dom.resetDemoBtn.addEventListener("click", () => {
   state = createInitialState();
-  saveAndRender("Dados fake reiniciados.");
+  saveAndRender("Dados demo reiniciados.");
 });
 
 dom.newOrderBtn.addEventListener("click", addDemoOrder);
@@ -571,7 +581,7 @@ dom.productForm.addEventListener("submit", (event) => {
     sold: 0
   });
   dom.productForm.reset();
-  saveAndRender("Produto fake adicionado.");
+  saveAndRender("Produto demo adicionado.");
 });
 
 dom.cashForm.addEventListener("submit", (event) => {
@@ -592,7 +602,7 @@ dom.cashForm.addEventListener("submit", (event) => {
     amount
   });
   dom.cashForm.reset();
-  saveAndRender("Movimento fake registrado.");
+  saveAndRender("Movimento demo registrado.");
 });
 
 setLoggedIn(isLoggedIn());
