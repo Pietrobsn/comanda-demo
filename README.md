@@ -6,6 +6,8 @@ Este repositório contém uma versão demonstrativa do Comanda, criada exclusiva
 
 Comanda Demo é uma vitrine pública e segura de um painel de gestão para operações de food delivery. A versão oficial/comercial do Comanda é privada; este repositório existe apenas para demonstrar interface, fluxo operacional e organização técnica em um ambiente sem dependências reais.
 
+A interface desta demonstração segue a identidade visual do produto comercial, incluindo login, navegação lateral, painéis operacionais, indicadores, listas, tabelas e responsividade. A implementação pública é independente: nenhuma lógica privada, integração ou configuração do ambiente oficial é utilizada.
+
 Esta demo não contém dados reais, credenciais de produção, banco real, chamadas externas, integrações reais de pagamento, impressão ou qualquer conexão com a versão comercial. Todos os dados são fictícios e ficam salvos em `localStorage` no navegador.
 
 ## Demonstração visual
@@ -30,6 +32,7 @@ Esta demo não contém dados reais, credenciais de produção, banco real, chama
 - Login demo.
 - Dashboard com indicadores fictícios.
 - Pedidos e comandas demo com mudança de status.
+- Alternância entre quadro e lista, busca e filtros de pedidos.
 - Cardápio/produtos demonstrativos.
 - Caixa demo com entradas e saídas locais.
 - Entregadores demonstrativos.

@@ -3,214 +3,278 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Comanda Demo</title>
+    <meta name="theme-color" content="#ff5a1f" />
+    <title>Comanda Demo - Painel da loja</title>
     <meta
       name="description"
       content="Versão demonstrativa pública do Comanda, com dados fictícios e persistência local."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="loginView" class="login-shell">
-      <main class="login-panel" aria-labelledby="loginTitle">
-        <section class="login-copy">
-          <div class="brand-lockup" aria-label="Comanda Demo">
-            <span class="brand-mark" aria-hidden="true">C</span>
-            <div>
-              <span>Comanda Demo</span>
-              <small>Painel operacional para portfólio</small>
+    <svg class="svg-sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></symbol>
+      <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1z"/><path d="M8 7h8M8 12h8M8 17h5"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 15h4"/></symbol>
+      <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H3v14h2M15 18H9M19 18h2v-5l-3-5h-4v10h1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+      <symbol id="i-box" viewBox="0 0 24 24"><path d="m21 8-9 5-9-5 9-5 9 5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16l4-5 4 3 5-7"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21a7 7 0 0 0-14 0"/><circle cx="12" cy="7" r="4"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></symbol>
+      <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 10h18M5 10v10h14V10M4 4h16l1 6H3l1-6z"/><path d="M9 20v-6h6v6"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    </svg>
+
+    <div id="loginView" class="auth-shell">
+      <main class="auth-layout" aria-labelledby="loginTitle">
+        <section class="login-landing" aria-label="Apresentação do Comanda Demo">
+          <div class="login-landing-copy">
+            <span class="eyebrow">Comanda - central de pedidos</span>
+            <h1 id="loginTitle">Acesse o painel demonstrativo.</h1>
+            <p>
+              Explore uma operação completa de pedidos, cardápio, caixa e entrega com
+              dados fictícios salvos somente neste navegador.
+            </p>
+            <div class="login-benefits" aria-label="Recursos da demonstração">
+              <span><svg><use href="#i-receipt"></use></svg> Pedidos organizados em tempo real</span>
+              <span><svg><use href="#i-truck"></use></svg> Fluxo de balcão, retirada e delivery</span>
+              <span><svg><use href="#i-card"></use></svg> Caixa, cardápio e estoque integrados</span>
             </div>
-          </div>
-          <h1 id="loginTitle">Central de pedidos para operação de balcão e delivery.</h1>
-          <p>
-            Navegue por pedidos, comandas, cardápio, caixa e estoque em uma
-            experiência demonstrativa segura, com dados fictícios salvos apenas
-            neste navegador.
-          </p>
-          <div class="login-proof-grid" aria-label="Recursos da demo">
-            <span>Pedidos em etapas</span>
-            <span>Caixa local</span>
-            <span>Cardápio editável</span>
-            <span>Impressão simulada</span>
           </div>
         </section>
 
-        <form id="loginForm" class="login-card">
-          <div>
-            <p class="section-kicker">Acesso demo</p>
-            <h2>Entrar no painel</h2>
-            <p class="login-card-copy">Use a credencial abaixo para explorar o produto sem conexão externa.</p>
+        <form id="loginForm" class="connection-panel">
+          <div class="login-card-brand">
+            <span class="brand-mark" aria-hidden="true"><svg><use href="#i-layers"></use></svg></span>
+            <div>
+              <strong>Comanda Demo</strong>
+              <small>Painel da loja <span class="login-status">Acesso demo</span></small>
+            </div>
           </div>
-          <div class="credential-box" aria-label="Credenciais demo">
-            <span>Email: <strong>demo@comanda.local</strong></span>
-            <span>Senha: <strong>Demo@123</strong></span>
+          <h2>Entrar na sua conta</h2>
+          <div class="demo-credentials" aria-label="Credenciais demonstrativas">
+            <span>Use as credenciais preenchidas abaixo.</span>
+            <strong>demo@comanda.local</strong>
+            <strong>Demo@123</strong>
           </div>
           <label>
             Email
-            <input id="loginEmail" autocomplete="username" value="demo@comanda.local" />
+            <span class="login-field">
+              <svg><use href="#i-user"></use></svg>
+              <input id="loginEmail" autocomplete="username" value="demo@comanda.local" />
+            </span>
           </label>
           <label>
             Senha
-            <input
-              id="loginCode"
-              type="password"
-              autocomplete="current-password"
-              value="Demo@123"
-            />
+            <span class="login-field">
+              <svg><use href="#i-lock"></use></svg>
+              <input id="loginCode" type="password" autocomplete="current-password" value="Demo@123" />
+            </span>
           </label>
           <p id="loginMessage" class="form-message" role="alert"></p>
-          <button class="primary-action" type="submit">Entrar</button>
+          <button class="btn primary full" type="submit">
+            <svg><use href="#i-user"></use></svg>
+            Entrar no painel
+          </button>
+          <p class="login-trust-note">
+            <svg><use href="#i-check"></use></svg>
+            Versão segura, sem conexão com o ambiente comercial.
+          </p>
         </form>
       </main>
     </div>
 
     <div id="appView" class="app-shell hidden">
-      <aside class="sidebar" aria-label="Navegação principal">
-        <div class="sidebar-brand">
-          <span class="brand-mark" aria-hidden="true">C</span>
+      <aside class="admin-sidebar" aria-label="Menu administrativo">
+        <div class="admin-sidebar-brand">
+          <span class="brand-mark" aria-hidden="true"><svg><use href="#i-layers"></use></svg></span>
           <div>
             <strong>Comanda Demo</strong>
-            <small>Operação demonstrativa</small>
+            <span>Painel demonstrativo</span>
           </div>
         </div>
-        <div class="sidebar-status">
-          <span></span>
+
+        <div class="admin-store-card">
+          <span class="store-status-dot" aria-hidden="true"></span>
           <div>
             <strong>Loja aberta</strong>
-            <small>Pedidos demo ativos</small>
+            <small>Operação local ativa</small>
           </div>
         </div>
 
-        <nav class="nav-list">
-          <button class="nav-item is-active" data-view="dashboard" type="button">
-            <span class="nav-icon">01</span>Dashboard
-          </button>
-          <button class="nav-item" data-view="orders" type="button">
-            <span class="nav-icon">02</span>Pedidos
-          </button>
-          <button class="nav-item" data-view="catalog" type="button">
-            <span class="nav-icon">03</span>Cardápio
-          </button>
-          <button class="nav-item" data-view="cash" type="button">
-            <span class="nav-icon">04</span>Caixa
-          </button>
-          <button class="nav-item" data-view="drivers" type="button">
-            <span class="nav-icon">05</span>Entregadores
-          </button>
-          <button class="nav-item" data-view="stock" type="button">
-            <span class="nav-icon">06</span>Estoque
-          </button>
-          <button class="nav-item" data-view="reports" type="button">
-            <span class="nav-icon">07</span>Relatórios
-          </button>
+        <label class="mobile-admin-jump" for="mobileNavSelect">
+          <span>Ir para</span>
+          <select id="mobileNavSelect" aria-label="Ir para secao do painel">
+            <option value="dashboard">Visão geral</option>
+            <option value="orders">Gestão de pedidos</option>
+            <option value="cash">Caixa</option>
+            <option value="stock">Estoque</option>
+            <option value="catalog">Produtos</option>
+            <option value="drivers">Entregadores</option>
+            <option value="reports">Relatórios</option>
+          </select>
+        </label>
+
+        <nav class="admin-nav">
+          <div class="admin-nav-group">
+            <span class="admin-nav-label">Operação</span>
+            <button class="nav-item is-active" data-view="dashboard" type="button"><svg><use href="#i-grid"></use></svg>Visão geral</button>
+            <button class="nav-item" data-view="orders" type="button"><svg><use href="#i-receipt"></use></svg>Gestão de pedidos</button>
+            <button class="nav-item" data-view="cash" type="button"><svg><use href="#i-card"></use></svg>Caixa</button>
+            <button class="nav-item" data-view="stock" type="button"><svg><use href="#i-box"></use></svg>Estoque</button>
+          </div>
+          <div class="admin-nav-group">
+            <span class="admin-nav-label">Cardápio</span>
+            <button class="nav-item" data-view="catalog" type="button"><svg><use href="#i-store"></use></svg>Produtos</button>
+          </div>
+          <div class="admin-nav-group">
+            <span class="admin-nav-label">Delivery</span>
+            <button class="nav-item" data-view="drivers" type="button"><svg><use href="#i-truck"></use></svg>Entregadores</button>
+          </div>
+          <div class="admin-nav-group">
+            <span class="admin-nav-label">Finanças</span>
+            <button class="nav-item" data-view="reports" type="button"><svg><use href="#i-chart"></use></svg>Relatórios</button>
+          </div>
         </nav>
 
-        <button id="logoutBtn" class="ghost-action" type="button">Sair</button>
+        <div class="admin-sidebar-footer">
+          <button id="logoutBtn" class="sidebar-logout" type="button"><svg><use href="#i-logout"></use></svg>Sair da conta</button>
+        </div>
       </aside>
 
       <main class="workspace">
-        <header class="topbar">
+        <header class="page-header">
           <div>
-            <p class="section-kicker">Portfólio público</p>
-            <h2 id="viewTitle">Dashboard</h2>
+            <p id="viewEyebrow" class="eyebrow">Resumo de hoje</p>
+            <h1 id="viewTitle">Visão geral</h1>
+            <p id="viewDescription" class="page-description">Sua operação demonstrativa em um relance.</p>
           </div>
-          <div class="topbar-actions">
-            <button id="resetDemoBtn" class="secondary-action" type="button">Reiniciar demo</button>
-            <button id="newOrderBtn" class="primary-action" type="button">Novo pedido demo</button>
+          <div class="page-actions">
+            <button id="resetDemoBtn" class="btn ghost" type="button"><svg><use href="#i-rotate"></use></svg>Reiniciar demo</button>
+            <button id="newOrderBtn" class="btn primary" type="button"><svg><use href="#i-plus"></use></svg>Novo pedido demo</button>
           </div>
         </header>
 
-        <section class="demo-banner">
-          <strong>Demo pública</strong>
-          <span>Dados fictícios, persistência local e impressão apenas simulada.</span>
+        <section class="demo-notice" aria-label="Aviso da demonstração">
+          <span class="demo-dot" aria-hidden="true"></span>
+          <strong>Versão demonstrativa</strong>
+          <span>Dados fictícios salvos localmente.</span>
         </section>
 
-        <section id="dashboard" class="view-section is-active" aria-labelledby="dashboardTitle">
-          <div class="section-heading">
-            <p class="section-kicker">Resumo de hoje</p>
-            <h3 id="dashboardTitle">Operação em andamento</h3>
-          </div>
+        <section id="dashboard" class="view-section is-active" aria-label="Visão geral">
           <div id="metricsGrid" class="metrics-grid"></div>
-          <div class="dashboard-grid">
-            <article class="panel">
+          <div class="overview-grid">
+            <article class="workspace-panel order-summary-panel">
               <div class="panel-heading">
-                <h4>Fila de pedidos</h4>
-                <span id="openOrdersBadge" class="status-chip"></span>
+                <div>
+                  <span class="eyebrow">Fluxo operacional</span>
+                  <h2>Pedidos em andamento</h2>
+                </div>
+                <span id="openOrdersBadge" class="badge green"></span>
               </div>
               <div id="dashboardOrders" class="compact-list"></div>
             </article>
-            <article class="panel">
-              <div class="panel-heading">
-                <h4>Produtos mais pedidos</h4>
-                <span class="status-chip muted">Demo</span>
+            <aside class="overview-side">
+              <article class="workspace-panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">Cardápio</span>
+                    <h2>Mais pedidos</h2>
+                  </div>
+                </div>
+                <div id="topProducts" class="compact-list"></div>
+              </article>
+              <div class="operation-shortcuts" aria-label="Atalhos da operacao">
+                <button type="button" data-shortcut="orders"><svg><use href="#i-receipt"></use></svg><span>Gerenciar pedidos</span><svg class="chevron"><use href="#i-chevron"></use></svg></button>
+                <button type="button" data-shortcut="catalog"><svg><use href="#i-store"></use></svg><span>Editar cardápio</span><svg class="chevron"><use href="#i-chevron"></use></svg></button>
+                <button type="button" data-shortcut="cash"><svg><use href="#i-card"></use></svg><span>Conferir caixa</span><svg class="chevron"><use href="#i-chevron"></use></svg></button>
               </div>
-              <div id="topProducts" class="compact-list"></div>
-            </article>
+            </aside>
           </div>
         </section>
 
-        <section id="orders" class="view-section" aria-labelledby="ordersTitle">
-          <div class="section-heading">
-            <p class="section-kicker">Pedidos e comandas</p>
-            <h3 id="ordersTitle">Pedidos e Comandas</h3>
+        <section id="orders" class="view-section" aria-label="Gestão de pedidos">
+          <div class="orders-toolbar">
+            <div class="view-toggle" role="group" aria-label="Visualização dos pedidos">
+              <button class="view-btn is-active" data-orders-view="board" type="button">Quadro</button>
+              <button class="view-btn" data-orders-view="list" type="button">Lista</button>
+            </div>
+            <label class="search-box"><svg><use href="#i-search"></use></svg><input id="orderSearch" placeholder="Buscar pedido ou cliente" /></label>
+            <select id="statusFilter" aria-label="Filtrar por status"><option value="all">Todos os status</option><option>Recebido</option><option>Em preparo</option><option>Saiu para entrega</option><option>Finalizado</option></select>
+            <select id="paymentFilter" aria-label="Filtrar por pagamento"><option value="all">Todos pagamentos</option><option value="paid">Pago</option><option value="pending">Pendente</option></select>
           </div>
+          <div id="orderStatusSummary" class="status-summary"></div>
           <div id="ordersBoard" class="orders-board"></div>
+          <div id="ordersList" class="orders-table-wrap hidden"></div>
         </section>
 
-        <section id="catalog" class="view-section" aria-labelledby="catalogTitle">
-          <div class="section-heading">
-            <p class="section-kicker">Cardápio demo</p>
-            <h3 id="catalogTitle">Cardápio</h3>
+        <section id="catalog" class="view-section" aria-label="Produtos do cardapio">
+          <div class="catalog-toolbar">
+            <span>Produtos e categorias do cardápio em um só lugar.</span>
+            <button id="showProductFormBtn" class="btn primary" type="button"><svg><use href="#i-plus"></use></svg>Novo produto</button>
           </div>
-          <form id="productForm" class="inline-form">
-            <input id="productName" placeholder="Nome do produto" />
-            <input id="productCategory" placeholder="Categoria" />
-            <input id="productPrice" inputmode="decimal" placeholder="Preço" />
-            <button class="primary-action" type="submit">Adicionar</button>
+          <form id="productForm" class="editor-panel hidden">
+            <label>Nome do produto<input id="productName" placeholder="Ex.: Pizza especial" /></label>
+            <label>Categoria<input id="productCategory" placeholder="Ex.: Pizzas" /></label>
+            <label>Preço<input id="productPrice" inputmode="decimal" placeholder="0,00" /></label>
+            <div class="editor-actions"><button class="btn primary" type="submit">Salvar produto</button><button id="cancelProductBtn" class="btn ghost" type="button">Cancelar</button></div>
           </form>
-          <div id="catalogList" class="data-list"></div>
+          <div class="catalog-manager">
+            <aside class="catalog-categories">
+              <div class="column-head"><strong>Categorias</strong><span id="categoryCount"></span></div>
+              <div id="categoryList" class="category-list"></div>
+            </aside>
+            <section class="catalog-products">
+              <div class="column-head"><strong id="catalogSelectedTitle">Todos os produtos</strong><span id="productCount"></span></div>
+              <div id="catalogList" class="product-list"></div>
+            </section>
+          </div>
         </section>
 
-        <section id="cash" class="view-section" aria-labelledby="cashTitle">
-          <div class="section-heading">
-            <p class="section-kicker">Caixa demonstrativo</p>
-            <h3 id="cashTitle">Movimentos do dia</h3>
-          </div>
-          <form id="cashForm" class="inline-form">
-            <select id="cashType" aria-label="Tipo de movimento">
-              <option value="entrada">Entrada</option>
-              <option value="saida">Saída</option>
-            </select>
-            <input id="cashDescription" placeholder="Descrição" />
-            <input id="cashAmount" inputmode="decimal" placeholder="Valor" />
-            <button class="primary-action" type="submit">Registrar</button>
-          </form>
-          <div id="cashSummary" class="metrics-grid slim"></div>
-          <div id="cashList" class="data-list"></div>
+        <section id="cash" class="view-section" aria-label="Caixa">
+          <div id="cashSummary" class="metrics-grid compact"></div>
+          <article class="workspace-panel">
+            <div class="panel-heading"><div><span class="eyebrow">Movimentações</span><h2>Movimentos do dia</h2></div><span class="badge">Caixa demo</span></div>
+            <form id="cashForm" class="cash-form">
+              <select id="cashType" aria-label="Tipo de movimento"><option value="entrada">Entrada</option><option value="saida">Saída</option></select>
+              <input id="cashDescription" placeholder="Descrição do movimento" />
+              <input id="cashAmount" inputmode="decimal" placeholder="Valor" />
+              <button class="btn primary" type="submit">Registrar</button>
+            </form>
+            <div id="cashList" class="table-host"></div>
+          </article>
         </section>
 
-        <section id="drivers" class="view-section" aria-labelledby="driversTitle">
-          <div class="section-heading">
-            <p class="section-kicker">Equipe externa</p>
-            <h3 id="driversTitle">Entregadores</h3>
-          </div>
-          <div id="driversList" class="data-list"></div>
+        <section id="drivers" class="view-section" aria-label="Entregadores">
+          <article class="workspace-panel">
+            <div class="panel-heading"><div><span class="eyebrow">Delivery</span><h2>Equipe de entregadores</h2></div><span class="badge green">Equipe demo</span></div>
+            <div id="driversList" class="table-host"></div>
+          </article>
         </section>
 
-        <section id="stock" class="view-section" aria-labelledby="stockTitle">
-          <div class="section-heading">
-            <p class="section-kicker">Estoque básico</p>
-            <h3 id="stockTitle">Itens demonstrativos</h3>
-          </div>
-          <div id="stockList" class="data-list"></div>
+        <section id="stock" class="view-section" aria-label="Estoque">
+          <div id="stockCounters" class="stock-counters"></div>
+          <article class="workspace-panel">
+            <div class="panel-heading"><div><span class="eyebrow">Operação</span><h2>Controle de insumos</h2></div><span class="badge">Estoque local</span></div>
+            <div id="stockList" class="table-host"></div>
+          </article>
         </section>
 
-        <section id="reports" class="view-section" aria-labelledby="reportsTitle">
-          <div class="section-heading">
-            <p class="section-kicker">Relatórios simples</p>
-            <h3 id="reportsTitle">Leitura demonstrativa</h3>
-          </div>
-          <div id="reportsGrid" class="dashboard-grid"></div>
+        <section id="reports" class="view-section" aria-label="Relatórios">
+          <div id="reportsGrid" class="reports-grid"></div>
         </section>
       </main>
     </div>
