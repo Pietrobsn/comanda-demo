@@ -1,10 +1,10 @@
 # Comanda Demo
 
-Este repositório contém uma versão pública, reduzida, simplificada e demonstrativa do Comanda, criada exclusivamente para portfólio e avaliação técnica.
+Este repositório apresenta uma demonstração pública do Comanda, criada para portfólio e avaliação técnica.
 
-O Comanda oficial é um sistema comercial privado. O código-fonte real pertence ao autor e não está disponível publicamente. Regras de negócio completas, integrações, configurações de produção, estrutura interna e funcionalidades exclusivas foram propositalmente removidas desta versão.
+O Comanda oficial é um produto comercial privado. Sua estrutura completa, regras internas, integrações, configurações de produção e recursos avançados não são publicados por estratégia, segurança e privacidade.
 
-Esta demo não representa a versão completa do produto. Ela existe apenas para demonstrar parte da interface, da organização das telas, do fluxo operacional básico e da experiência de uso, sem expor código privado, dados reais ou lógica comercial sensível.
+Esta demo funciona como uma vitrine técnica segura: mostra parte da interface, da organização das telas e do fluxo operacional básico, sem representar o sistema completo ou expor detalhes sensíveis do produto real.
 
 ## O que esta demo demonstra
 
@@ -23,28 +23,25 @@ Esta demo apresenta apenas um recorte público e simplificado da experiência do
 
 ## O que foi omitido propositalmente
 
-Por se tratar de um produto privado, esta versão pública omite propositalmente partes da estrutura real do Comanda. A ausência desses itens na demo não significa que eles não existam na versão oficial; significa apenas que não fazem parte do recorte público disponibilizado para portfólio.
+Esta versão pública foi reduzida de forma proposital. O objetivo não é publicar o Comanda completo, mas apresentar um recorte seguro da experiência visual e operacional do sistema.
 
-- Código-fonte oficial completo.
-- Estrutura real de banco de dados.
-- Regras comerciais e operacionais completas.
-- Módulos internos da versão oficial.
-- Recursos avançados de operação e delivery.
-- Configurações reais de produção.
-- Integrações reais de banco, API, impressão e serviços externos.
-- Dados reais de clientes, pedidos ou empresas.
-- Credenciais, tokens, chaves e variáveis privadas.
-- Lógicas sensíveis do produto comercial.
+A versão oficial possui módulos, regras internas, integrações e recursos avançados que não são descritos em detalhes neste repositório por se tratar de um produto privado. A ausência desses itens na demo não significa limitação do produto real; significa apenas que eles não fazem parte da vitrine pública.
+
+- Código-fonte oficial e estrutura completa do sistema
+- Banco de dados, integrações e configurações reais de produção
+- Regras comerciais e operacionais internas
+- Módulos e recursos avançados da versão oficial
+- Dados reais de clientes, pedidos ou empresas
+- Credenciais, tokens, chaves e variáveis privadas
+- Lógicas sensíveis do produto comercial
 
 ## Sobre a versão oficial
 
-A versão oficial do Comanda é privada e possui estrutura, regras, recursos, integrações e complexidade que não fazem parte deste repositório público.
-
-Esta demo pública funciona como uma vitrine técnica reduzida. Ela mostra parte da experiência visual e operacional do sistema, mas não representa todas as funcionalidades, regras ou capacidades do produto real.
+A versão oficial do Comanda é um produto privado e comercial, separado desta demonstração pública. Ela possui estrutura, recursos e complexidade que não são expostos neste repositório. Esta demo existe apenas como vitrine técnica para avaliação visual, organização de interface e fluxo operacional básico.
 
 ## Importante
 
-Esta demonstração não deve ser interpretada como a versão completa do Comanda. Ela é apenas uma vitrine técnica pública, criada para apresentar parte da experiência visual e operacional do sistema. A versão oficial/comercial é privada e possui recursos, módulos e regras que não são expostos neste repositório.
+Esta demonstração não deve ser interpretada como a versão completa do Comanda. Ela é uma vitrine técnica pública, criada para apresentar parte da experiência visual e operacional do sistema. A versão oficial/comercial é privada e possui recursos, módulos e regras que não são expostos neste repositório.
 
 ## Demonstração visual
 
