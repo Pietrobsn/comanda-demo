@@ -1,0 +1,20 @@
+{
+  "name": "comanda-demo",
+  "version": "1.0.0",
+  "description": "Versao demonstrativa publica do Comanda para portfolio.",
+  "type": "module",
+  "private": false,
+  "scripts": {
+    "check": "node --check app.js && node --check server.mjs",
+    "dev": "node server.mjs"
+  },
+  "keywords": [
+    "comanda",
+    "portfolio",
+    "delivery",
+    "dashboard",
+    "vanilla-js"
+  ],
+  "author": "Pietro",
+  "license": "MIT"
+}
